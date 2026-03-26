@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUGGMUSEET</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: rgba(0,0,0,0.75);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      padding: 3rem 4rem 2.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .site-name { text-transform: uppercase; letter-spacing: 0.22em; color: rgba(0,0,0,0.85); }
+    .site-sub  { text-transform: uppercase; letter-spacing: 0.14em; color: rgba(0,0,0,0.45); font-size: 0.62rem; }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+    }
+    p { text-transform: uppercase; letter-spacing: 0.2em; color: rgba(0,0,0,0.3); font-size: 0.62rem; }
+    footer {
+      padding: 1.5rem 4rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    footer span { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.22); }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="site-name">Muggmuseet</span>
+    <span class="site-sub">Svenska Muggmuseet f&ouml;r Konst och Design</span>
+  </header>
+  <main>
+    <p>The collection is being prepared.</p>
+  </main>
+  <footer>
+    <span>The Collection</span>
+  </footer>
+</body>
+</html>
