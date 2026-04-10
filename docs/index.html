@@ -129,8 +129,9 @@
 
     .acquire {
       display: inline-block;
+      width: fit-content;
       margin-top: 0.4rem;
-      padding: 0.45rem 0.9rem;
+      padding: 0.45rem 0.75rem;
       font-size: 0.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -162,13 +163,13 @@
 
     @keyframes glow-pulse {
       0%, 100% { box-shadow: 0 0 4px 1px rgba(2, 173, 64, 0.15); }
-      50%       { box-shadow: 0 0 8px 3px rgba(2, 173, 64, 0.5); }
+      50%       { box-shadow: 0 0 8px 3px rgba(2, 173, 64, 0.50); }
     }
 
     .card.for-sale {
       border-radius: 2px;
       padding: 0.6rem;
-      animation: glow-pulse 2.3s ease-in-out infinite;
+      animation: glow-pulse 0.57s ease-in-out infinite;
     }
 
     /* ── Footer ────────────────────────────────────────────── */
