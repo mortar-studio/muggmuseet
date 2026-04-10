@@ -74,13 +74,14 @@
       display: flex;
       flex-direction: column;
       gap: 0.8rem;
+      overflow: visible;
     }
 
     .card-image {
       position: relative;
       aspect-ratio: 1;
       background: #f4f4f4;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .card-image img {
@@ -135,6 +136,63 @@
 
     .acquire:hover { text-decoration: underline; }
 
+    .permanent {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    /* ── For-sale glow ─────────────────────────────────────── */
+
+    .card.for-sale {
+      box-shadow: 0 0 40px 16px rgba(2, 173, 64, 0.38);
+      border-radius: 2px;
+      padding: 0.6rem;
+    }
+
+    /* ── Arrow ─────────────────────────────────────────────── */
+
+    @keyframes arrow-pulse {
+      0%, 100% { transform: translate(var(--tx,-50%), var(--ty,-50%)) rotate(var(--rot,45deg)) scale(1);    }
+      50%       { transform: translate(var(--tx,-50%), var(--ty,-50%)) rotate(var(--rot,45deg)) scale(0.78); }
+    }
+
+    .arrow-wrap {
+      position: absolute;
+      z-index: 20;
+      width: 196px;
+      cursor: default;
+      pointer-events: auto;
+      animation: arrow-pulse 0.9s ease-in-out infinite;
+      filter: drop-shadow(0 4px 14px rgba(211, 119, 102, 0.55));
+    }
+
+    .arrow-wrap svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .arrow-wrap[data-pos="0"] {
+      top: 0; left: 0; right: auto; bottom: auto;
+      --tx: -50%; --ty: -50%; --rot: 45deg;
+    }
+    .arrow-wrap[data-pos="1"] {
+      top: 0; right: 0; left: auto; bottom: auto;
+      --tx: 50%; --ty: -50%; --rot: 135deg;
+    }
+    .arrow-wrap[data-pos="2"] {
+      bottom: 0; right: 0; left: auto; top: auto;
+      --tx: 50%; --ty: 50%; --rot: 225deg;
+    }
+    .arrow-wrap[data-pos="3"] {
+      bottom: 0; left: 0; right: auto; top: auto;
+      --tx: -50%; --ty: 50%; --rot: 315deg;
+    }
+
     /* ── Footer ────────────────────────────────────────────── */
 
     footer {
@@ -166,610 +224,655 @@
   <main class="grid">
   <div class="card">
     <div class="card-image">
-      <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260409T213042Z_21cdda3c93484dcfade440a940641e43_render.jpg" alt="Helmet of the Montefortino Type" loading="lazy">
-      <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260409T213045Z_37b175acf1b74b18ac01076827c659e3_render.jpg"  alt="Helmet of the Montefortino Type — label view" loading="lazy">
-    </div>
-    <div class="card-info">
-      <span class="mugg-num">MUGG-050</span>
-      <span class="title">Helmet of the Montefortino Type</span>
-      <span class="attr">late 4th–early 3rd century BCE; cheekpieces, modern</span>
-      
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260409T030444Z_f4c5c99600b74736ac9bc756efe9aea4_render.jpg" alt="Abraham&#x27;s Sacrifice" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260409T030447Z_f45e459bcdc34e01b5d75f7d634ff817_render.jpg"  alt="Abraham&#x27;s Sacrifice — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-049</span>
       <span class="title">Abraham&#x27;s Sacrifice</span>
       <span class="attr">Rembrandt (Rembrandt van Rijn), 1655</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-049">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260407T213041Z_0aa08627e0154313b8b6d4587844be90_render.jpg" alt="Still Life with Dead Game, Fruits, and Vegetables in a Market" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260407T213044Z_862fcb96c3c14d678f1cc37d2e673b10_render.jpg"  alt="Still Life with Dead Game, Fruits, and Vegetables in a Market — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-048</span>
       <span class="title">Still Life with Dead Game, Fruits, and Vegetables in a Market</span>
       <span class="attr">Frans Snyders, 1614</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-048">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260407T125720Z_883a22e502be45d48ae9afd561fd4b2c_render.jpg" alt="Upper Arm Defense (Rerebrace)" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260407T125720Z_883a22e502be45d48ae9afd561fd4b2c_render.jpg"  alt="Upper Arm Defense (Rerebrace) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-047</span>
       <span class="title">Upper Arm Defense (Rerebrace)</span>
       <span class="attr">ca. 1430–40</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-047">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260407T133228Z_d8ab0307e90a4165acbe2ddea8ace5f8_render.jpg" alt="Miss Zara, from the Actresses series (N203) issued by Wm. S. Kimball &amp; Co." loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260407T133230Z_584ee6b1a33b451b81efa016e87a7249_render.jpg"  alt="Miss Zara, from the Actresses series (N203) issued by Wm. S. Kimball &amp; Co. — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-047</span>
       <span class="title">Miss Zara, from the Actresses series (N203) issued by Wm. S. Kimball &amp; Co.</span>
       <span class="attr">William S. Kimball &amp; Company, 1889</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-047">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
-  <div class="card">
+  <div class="card for-sale">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260405T213045Z_cb365e46f41a40d9a57fa947e1734f41_render.jpg" alt="The Singer in Green" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260405T213048Z_4b7f1f9f8f45425cace71261301a58b4_render.jpg"  alt="The Singer in Green — label view" loading="lazy">
+      <div class="arrow-wrap" data-pos="0" style="animation-delay:0.02s"><svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,18 Q0,18 0,20.5 L0,35.5 Q0,38 2.5,38 L54,38 L54,50 Q54,56 59,53 L99,30 Q104,28 99,26 L59,3 Q54,0 54,6 L54,18 Z" fill="rgb(211,119,102)"/></svg></div>
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-046</span>
       <span class="title">The Singer in Green</span>
       <span class="attr">Edgar Degas, ca. 1884</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-046">Acquire &rarr;</a>
+      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-046">Acquire Replica &rarr;</a>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260405T044126Z_783a2541b5cc4dd4805092d82181e0d2_render.jpg" alt="Happy Easter (Frohe Ostern)" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260405T044130Z_f9703587d2ee4916817a0836a7aa9980_render.jpg"  alt="Happy Easter (Frohe Ostern) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-045</span>
       <span class="title">Happy Easter (Frohe Ostern)</span>
       <span class="attr">Urban Janke, 1908</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-045">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
-  <div class="card">
+  <div class="card for-sale">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260401T225948Z_9f3dcfcf7804420ebbdaf62083531b15_render.jpg" alt="Terracotta zoomorphic askos (vessel) with antlers" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260401T225951Z_0e90389cbeee4c0d944f946dddfd0151_render.jpg"  alt="Terracotta zoomorphic askos (vessel) with antlers — label view" loading="lazy">
+      <div class="arrow-wrap" data-pos="0" style="animation-delay:0.48s"><svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,18 Q0,18 0,20.5 L0,35.5 Q0,38 2.5,38 L54,38 L54,50 Q54,56 59,53 L99,30 Q104,28 99,26 L59,3 Q54,0 54,6 L54,18 Z" fill="rgb(211,119,102)"/></svg></div>
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-044</span>
       <span class="title">Terracotta zoomorphic askos (vessel) with antlers</span>
       <span class="attr">ca. 1725–1600 BCE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-044">Acquire &rarr;</a>
+      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-044">Acquire Replica &rarr;</a>
     </div>
   </div>
-  <div class="card">
+  <div class="card for-sale">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260401T222718Z_4c5cba172fdc475aa9ceee9e7aa94fda_render.jpg" alt="At the Circus: The Spanish Walk (Au Cirque: Le Pas espagnol)" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260401T222721Z_733e2cdfc1374c748c3866d85e68f202_render.jpg"  alt="At the Circus: The Spanish Walk (Au Cirque: Le Pas espagnol) — label view" loading="lazy">
+      <div class="arrow-wrap" data-pos="0" style="animation-delay:0.71s"><svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,18 Q0,18 0,20.5 L0,35.5 Q0,38 2.5,38 L54,38 L54,50 Q54,56 59,53 L99,30 Q104,28 99,26 L59,3 Q54,0 54,6 L54,18 Z" fill="rgb(211,119,102)"/></svg></div>
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-043</span>
       <span class="title">At the Circus: The Spanish Walk (Au Cirque: Le Pas espagnol)</span>
       <span class="attr">Henri de Toulouse-Lautrec, 1899</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-043">Acquire &rarr;</a>
+      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-043">Acquire Replica &rarr;</a>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://files.catbox.moe/et86i1.jpg" alt="Amphora" loading="lazy">
       <img class="back"  src="https://files.catbox.moe/1qrfai.jpg"  alt="Amphora — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-042</span>
       <span class="title">Amphora</span>
       <span class="attr">2500–1900 BCE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-042">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
-  <div class="card">
+  <div class="card for-sale">
     <div class="card-image">
       <img class="front" src="https://files.catbox.moe/v0vvc7.jpg" alt="Irises" loading="lazy">
       <img class="back"  src="https://files.catbox.moe/d89r9p.jpg"  alt="Irises — label view" loading="lazy">
+      <div class="arrow-wrap" data-pos="0" style="animation-delay:0.27s"><svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,18 Q0,18 0,20.5 L0,35.5 Q0,38 2.5,38 L54,38 L54,50 Q54,56 59,53 L99,30 Q104,28 99,26 L59,3 Q54,0 54,6 L54,18 Z" fill="rgb(211,119,102)"/></svg></div>
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-041</span>
       <span class="title">Irises</span>
       <span class="attr">Vincent van Gogh, 1890</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-041">Acquire &rarr;</a>
+      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-041">Acquire Replica &rarr;</a>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://files.catbox.moe/3n87gv.jpg" alt="Potpourri vase with candleholders (pot-pourri à bobêche) (one of a pair)" loading="lazy">
       <img class="back"  src="https://files.catbox.moe/8eees3.jpg"  alt="Potpourri vase with candleholders (pot-pourri à bobêche) (one of a pair) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-040</span>
       <span class="title">Potpourri vase with candleholders (pot-pourri à bobêche) (one of a pair)</span>
       <span class="attr">Sèvres Manufactory, 1760</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-040">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://files.catbox.moe/ku38e5.jpg" alt="Botanical Study of Indian Mulberry (Morinda citrifolia)" loading="lazy">
       <img class="back"  src="https://files.catbox.moe/om970h.jpg"  alt="Botanical Study of Indian Mulberry (Morinda citrifolia) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-039</span>
       <span class="title">Botanical Study of Indian Mulberry (Morinda citrifolia)</span>
       <span class="attr">late 18th century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-039">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://files.catbox.moe/4fezg4.jpg" alt="Limestone statue fragment of a right hand with a bracelet, holding a flower" loading="lazy">
       <img class="back"  src="https://files.catbox.moe/5js7zh.jpg"  alt="Limestone statue fragment of a right hand with a bracelet, holding a flower — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-038</span>
       <span class="title">Limestone statue fragment of a right hand with a bracelet, holding a flower</span>
       <span class="attr">4th–3rd century BCE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-038">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://files.catbox.moe/8xcp8i.jpg" alt="Botanical plate with thistle" loading="lazy">
       <img class="back"  src="https://files.catbox.moe/9l01em.jpg"  alt="Botanical plate with thistle — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-037</span>
       <span class="title">Botanical plate with thistle</span>
       <span class="attr">Chelsea Porcelain Manufactory, ca. 1755</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-037">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
-  <div class="card">
+  <div class="card for-sale">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260325T213105Z_ac05d95303684287b7aee3d88a6a6c8f_render.jpg" alt="Model Lotus Flower" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260325T213108Z_a573d3b00cc54254adebf0e6aeda0121_render.jpg"  alt="Model Lotus Flower — label view" loading="lazy">
+      <div class="arrow-wrap" data-pos="0" style="animation-delay:0.52s"><svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,18 Q0,18 0,20.5 L0,35.5 Q0,38 2.5,38 L54,38 L54,50 Q54,56 59,53 L99,30 Q104,28 99,26 L59,3 Q54,0 54,6 L54,18 Z" fill="rgb(211,119,102)"/></svg></div>
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-036</span>
       <span class="title">Model Lotus Flower</span>
       <span class="attr">ca. 2051–1981 B.C.</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-036">Acquire &rarr;</a>
+      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-036">Acquire Replica &rarr;</a>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260324T213106Z_b60967f91e674a5c90de767d7c913490_render.jpg" alt="Roses" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260324T213108Z_2f65cd368e9242f4b25d7330bcfca8aa_render.jpg"  alt="Roses — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-035</span>
       <span class="title">Roses</span>
       <span class="attr">Vincent van Gogh, 1890</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-035">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260323T213105Z_fdb505e5517b4e33a1dd0319aa7aaef0_render.jpg" alt="Face Mask" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260323T213108Z_685dec21db65492bb66b87ea217172cd_render.jpg"  alt="Face Mask — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-034</span>
       <span class="title">Face Mask</span>
       <span class="attr">2nd–7th century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-034">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260322T213103Z_a3fb696416af436e9964033095f78315_render.jpg" alt="War Mask" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260322T213105Z_771ddbbd31864716985b0fe95afe770d_render.jpg"  alt="War Mask — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-033</span>
       <span class="title">War Mask</span>
       <span class="attr">12th–14th century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-033">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260321T213120Z_8c06fd8dfcd3400a8f591e81ed496641_render.jpg" alt="Ritual Wine Container (Yu)" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260321T213122Z_d82a7c6a214a4cb0a9c20609212ece48_render.jpg"  alt="Ritual Wine Container (Yu) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-032</span>
       <span class="title">Ritual Wine Container (Yu)</span>
       <span class="attr">late 11th century BCE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-032">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260319T213115Z_ff8355d12795481da5433e3f6099c3c5_render.jpg" alt="Mask" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260319T213120Z_56d46d2f88ce4d248828d31c77b6dc8e_render.jpg"  alt="Mask — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-031</span>
       <span class="title">Mask</span>
       <span class="attr">2nd–3rd century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-031">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260318T213150Z_ca76107b809d4ff8958aee8363555e31_render.jpg" alt="Stela of the royal scribe Amunnakht praising the divine barque of Amun-Re, Lord of the Thrones of the Two Lands" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260318T213154Z_71cf512ab88b47a4bfe0d641f57588b6_render.jpg"  alt="Stela of the royal scribe Amunnakht praising the divine barque of Amun-Re, Lord of the Thrones of the Two Lands — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-030</span>
       <span class="title">Stela of the royal scribe Amunnakht praising the divine barque of Amun-Re, Lord of the Thrones of the Two Lands</span>
       <span class="attr">ca. 1184–1070 BCE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-030">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260318T203309Z_c0667f5e9698409e96353e5880a2983f_render.jpg" alt="Double-eagle pendant" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260318T203313Z_95f60a21fd3e4865b060f06e3d550303_render.jpg"  alt="Double-eagle pendant — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-029</span>
       <span class="title">Double-eagle pendant</span>
       <span class="attr">Initial Style artist(s), 1–500 CE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-029">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260318T092211Z_84917db7afd94bc3b8397db4977b8483_render.jpg" alt="Galileo and personifications of Astronomy, Perspective and Mathematics, frontispiece for &#x27;Opere di Galileo Galilei&#x27;" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260318T092213Z_a8ff9ab6762f45e79761aa6c5d3eed5f_render.jpg"  alt="Galileo and personifications of Astronomy, Perspective and Mathematics, frontispiece for &#x27;Opere di Galileo Galilei&#x27; — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-028</span>
       <span class="title">Galileo and personifications of Astronomy, Perspective and Mathematics, frontispiece for &#x27;Opere di Galileo Galilei&#x27;</span>
       <span class="attr">Stefano della Bella, 1656</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-028">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260317T014854Z_5e2a59cfd90042ab9f1c466c1640367e_render.jpg" alt="Lorenzo de&#x27; Medici, &#x27;il Magnifico&#x27; (1448–1492)" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260317T014856Z_60a4a72337c941a19b795f9289af6d4e_render.jpg"  alt="Lorenzo de&#x27; Medici, &#x27;il Magnifico&#x27; (1448–1492) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-027</span>
       <span class="title">Lorenzo de&#x27; Medici, &#x27;il Magnifico&#x27; (1448–1492)</span>
       <span class="attr">Niccolò Fiorentino (Niccolò di Forzore Spinelli), ca. 1490</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-027">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260316T213110Z_cc8cff196f5e4c9fae69e831c4818d4e_render.jpg" alt="Outer Coffin of the Chantress of Amun-Re Henettawy" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260316T213114Z_effee6379db64163851fb9528e846f16_render.jpg"  alt="Outer Coffin of the Chantress of Amun-Re Henettawy — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-026</span>
       <span class="title">Outer Coffin of the Chantress of Amun-Re Henettawy</span>
       <span class="attr">ca. 1000–945 B.C.</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-026">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260315T213110Z_b9bb4e12fa6843d7abf5daa482cdb3b8_render.jpg" alt="Nikare with his Wife and Daughter" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260315T213112Z_7f156377fb7e40e5aabfb301e792b4e8_render.jpg"  alt="Nikare with his Wife and Daughter — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-025</span>
       <span class="title">Nikare with his Wife and Daughter</span>
       <span class="attr">ca. 2420–2389 B.C. or later</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-025">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260314T213100Z_5640e9bef5e54524a824c122f3c9b938_render.jpg" alt="Terracotta fragment of a kylix (drinking cup)" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260314T213102Z_d2c8e270d346485d9a92e4ce9c6149f4_render.jpg"  alt="Terracotta fragment of a kylix (drinking cup) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-024</span>
       <span class="title">Terracotta fragment of a kylix (drinking cup)</span>
       <span class="attr">490–470 BCE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-024">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
-  <div class="card">
+  <div class="card for-sale">
     <div class="card-image">
       <img class="front" src="https://files.catbox.moe/54am67.jpg" alt="Woman&#x27;s Head" loading="lazy">
       <img class="back"  src="https://files.catbox.moe/ukqk16.jpg"  alt="Woman&#x27;s Head — label view" loading="lazy">
+      <div class="arrow-wrap" data-pos="0" style="animation-delay:0.81s"><svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,18 Q0,18 0,20.5 L0,35.5 Q0,38 2.5,38 L54,38 L54,50 Q54,56 59,53 L99,30 Q104,28 99,26 L59,3 Q54,0 54,6 L54,18 Z" fill="rgb(211,119,102)"/></svg></div>
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-023</span>
       <span class="title">Woman&#x27;s Head</span>
       <span class="attr">Amedeo Modigliani, 1912</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-023">Acquire &rarr;</a>
+      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-023">Acquire Replica &rarr;</a>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260311T213059Z_679c07c346e742aea8411b1f68ad67a8_render.jpg" alt="Chess Set" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260311T213101Z_9fa26cdc694f4808ac46f186e8ecdb01_render.jpg"  alt="Chess Set — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-021</span>
       <span class="title">Chess Set</span>
       <span class="attr">12th century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-021">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260309T213058Z_f99bd886b140443b8b38323faef18e73_render.jpg" alt="Face Mask Ornament" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260309T213101Z_b60ebde373de4816bd54536d0d12fd76_render.jpg"  alt="Face Mask Ornament — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-020</span>
       <span class="title">Face Mask Ornament</span>
       <span class="attr">6th–7th century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-020">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260309T120105Z_6fc0284248cc4efea71bebe14c5581ee_render.jpg" alt="The Banks of the Bièvre near Bicêtre" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260309T120109Z_6c66326403a54df08345688caf532d2c_render.jpg"  alt="The Banks of the Bièvre near Bicêtre — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-019</span>
       <span class="title">The Banks of the Bièvre near Bicêtre</span>
       <span class="attr">Henri Rousseau (le Douanier), ca. 1908–09</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-019">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
-  <div class="card">
+  <div class="card for-sale">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260309T033113Z_e66110ebd6a54beaa5696518d0aef4fb_render.jpg" alt="Still Life with Apples and a Pot of Primroses" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260309T033117Z_35e94665a3a443bc9c1524c5a82c8bf8_render.jpg"  alt="Still Life with Apples and a Pot of Primroses — label view" loading="lazy">
+      <div class="arrow-wrap" data-pos="0" style="animation-delay:0.83s"><svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,18 Q0,18 0,20.5 L0,35.5 Q0,38 2.5,38 L54,38 L54,50 Q54,56 59,53 L99,30 Q104,28 99,26 L59,3 Q54,0 54,6 L54,18 Z" fill="rgb(211,119,102)"/></svg></div>
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-018</span>
       <span class="title">Still Life with Apples and a Pot of Primroses</span>
       <span class="attr">Paul Cézanne, ca. 1890</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-018">Acquire &rarr;</a>
+      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-018">Acquire Replica &rarr;</a>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260308T213111Z_82bfde4f2dad4ffa9efb15400a09d23d_render.jpg" alt="Mask" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260308T213115Z_d6acdc4f8b084fca95b6a1e6148e68a3_render.jpg"  alt="Mask — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-017</span>
       <span class="title">Mask</span>
       <span class="attr">1st century BCE–7th century CE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-017">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260308T120103Z_8d2452a3f96a470f8cbecbea53c5511a_render.jpg" alt="Tahitian Faces (Frontal View and Profiles)" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260308T120105Z_5a780bc40aaf4b4591a3d85c3c3f642b_render.jpg"  alt="Tahitian Faces (Frontal View and Profiles) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-016</span>
       <span class="title">Tahitian Faces (Frontal View and Profiles)</span>
       <span class="attr">Paul Gauguin, ca. 1899</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-016">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260308T042732Z_7f3d62d2877a4289b608b28d639d8617_render.jpg" alt="Terracotta grotesque head" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260308T042735Z_ef2508b5cb8a40a7aa82ebdb52563ae8_render.jpg"  alt="Terracotta grotesque head — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-015</span>
       <span class="title">Terracotta grotesque head</span>
       <span class="attr">2nd–1st century BCE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-015">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260308T033100Z_372ffb8e666b4b0a948c2dbc5d18b294_render.jpg" alt="Silhouette Image of Kabuki Actor" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260308T033102Z_9c375bdbe314466da15932799253b77c_render.jpg"  alt="Silhouette Image of Kabuki Actor — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-014</span>
       <span class="title">Silhouette Image of Kabuki Actor</span>
       <span class="attr">Utagawa Yoshiiku, 19th century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-014">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260307T213059Z_5d321cfe6e2947a499ccab5da72f0670_render.jpg" alt="Soap Bubbles" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260307T213102Z_20050bee244945f4b3b84ea2a5656dda_render.jpg"  alt="Soap Bubbles — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-013</span>
       <span class="title">Soap Bubbles</span>
       <span class="attr">Jean Siméon Chardin, ca. 1733–34</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-013">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260307T120108Z_f7dde113070d4e93a6c4b9505f9e1b99_render.jpg" alt="Ceramic Face Mask" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260307T120111Z_31621aca9e354caca8499f3b9d133034_render.jpg"  alt="Ceramic Face Mask — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-012</span>
       <span class="title">Ceramic Face Mask</span>
       <span class="attr">2nd–7th century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-012">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260307T033059Z_2ff01f697145442eaf18e721da94fe25_render.jpg" alt="Corridor in the Asylum" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260307T033101Z_70da2102ea1247d69a2a1e4e7ea8ef45_render.jpg"  alt="Corridor in the Asylum — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-011</span>
       <span class="title">Corridor in the Asylum</span>
       <span class="attr">Vincent van Gogh, September 1889</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-011">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260306T213058Z_2813c8f40925471ab83699c500f44cd7_render.jpg" alt="Mask" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260306T213101Z_e0e66b0ad4c744469a708b8fd3913974_render.jpg"  alt="Mask — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-010</span>
       <span class="title">Mask</span>
       <span class="attr">6th–7th century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-010">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
-  <div class="card">
+  <div class="card for-sale">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260306T142138Z_1f18613d835d47d9b84ffd14701fb5ac_render.jpg" alt="Netsuke" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260306T142141Z_cf50f6f1ad8e461096cc6d4ef57e1a42_render.jpg"  alt="Netsuke — label view" loading="lazy">
+      <div class="arrow-wrap" data-pos="0" style="animation-delay:0.20s"><svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,18 Q0,18 0,20.5 L0,35.5 Q0,38 2.5,38 L54,38 L54,50 Q54,56 59,53 L99,30 Q104,28 99,26 L59,3 Q54,0 54,6 L54,18 Z" fill="rgb(211,119,102)"/></svg></div>
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-009</span>
       <span class="title">Netsuke</span>
       <span class="attr">19th century</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-009">Acquire &rarr;</a>
+      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-009">Acquire Replica &rarr;</a>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260305T150547Z_7d3369190d8e453d947a917ad51b74c7_render.jpg" alt="Chair (Sgabello)" loading="lazy">
       <img class="back"  src="https://pub-2cf875879dff4fc9b9315d5fdcb9cabe.r2.dev/muggmuseet/20260305T150550Z_5a7a257b04f446e292febe81959ac9ab_render.jpg"  alt="Chair (Sgabello) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-008</span>
       <span class="title">Chair (Sgabello)</span>
       <span class="attr">Workshop of Giuliano da Maiano (1432–1490) and Benedetto da Maiano (1442–1497), ca. 1489–91</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-008">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://i.ibb.co/TBcY3N6j/542b7d3e8e94.jpg" alt="Helm for the Joust of Peace (Stechhelm)" loading="lazy">
       <img class="back"  src="https://i.ibb.co/HfHnmtVP/c0d6872c6131.jpg"  alt="Helm for the Joust of Peace (Stechhelm) — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-007</span>
       <span class="title">Helm for the Joust of Peace (Stechhelm)</span>
       <span class="attr">ca. 1500</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-007">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://i.ibb.co/S4kc8GTb/d477a861e4dd.jpg" alt="Terracotta canopic urn" loading="lazy">
       <img class="back"  src="https://i.ibb.co/wZXvZBcY/b94dadab5fdd.jpg"  alt="Terracotta canopic urn — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-006</span>
       <span class="title">Terracotta canopic urn</span>
       <span class="attr">6th century BCE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-006">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
-  <div class="card">
+  <div class="card for-sale">
     <div class="card-image">
       <img class="front" src="https://i.ibb.co/p69fMVb5/e289c57fad13.jpg" alt="Mäda Primavesi (1903–2000)" loading="lazy">
       <img class="back"  src="https://i.ibb.co/b59Xsqrn/da4624c7c50d.jpg"  alt="Mäda Primavesi (1903–2000) — label view" loading="lazy">
+      <div class="arrow-wrap" data-pos="0" style="animation-delay:0.22s"><svg viewBox="0 0 100 56" xmlns="http://www.w3.org/2000/svg"><path d="M2.5,18 Q0,18 0,20.5 L0,35.5 Q0,38 2.5,38 L54,38 L54,50 Q54,56 59,53 L99,30 Q104,28 99,26 L59,3 Q54,0 54,6 L54,18 Z" fill="rgb(211,119,102)"/></svg></div>
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-005</span>
       <span class="title">Mäda Primavesi (1903–2000)</span>
       <span class="attr">Gustav Klimt, 1912–13</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-005">Acquire &rarr;</a>
+      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-005">Acquire Replica &rarr;</a>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://i.ibb.co/MDjqFHsj/68997a50e216.jpg" alt="The Thinker" loading="lazy">
       <img class="back"  src="https://i.ibb.co/Gf19KHXX/4f0f098f8b91.jpg"  alt="The Thinker — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-004</span>
       <span class="title">The Thinker</span>
       <span class="attr">Auguste Rodin, modeled ca. 1880, cast ca. 1910</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-004">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://i.ibb.co/FkFND7GH/ab62b6ba0559.jpg" alt="Stirrup-spout bottle with fox warrior" loading="lazy">
       <img class="back"  src="https://i.ibb.co/0jb6dMrq/48b3a5ec8848.jpg"  alt="Stirrup-spout bottle with fox warrior — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-003</span>
       <span class="title">Stirrup-spout bottle with fox warrior</span>
       <span class="attr">Moche artist(s), 500–800 CE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-003">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://i.ibb.co/vxNRLzb6/d8e452c3ddf6.jpg" alt="Glass oinochoe" loading="lazy">
       <img class="back"  src="https://i.ibb.co/DPS2Y9hm/9372a9480e58.jpg"  alt="Glass oinochoe — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-002</span>
       <span class="title">Glass oinochoe</span>
       <span class="attr">mid-4th–early 3rd century BCE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-002">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   <div class="card">
     <div class="card-image">
       <img class="front" src="https://i.ibb.co/4w2Qbd1v/c601e346b00d.jpg" alt="Stirrup-spout bottle with seated figure" loading="lazy">
       <img class="back"  src="https://i.ibb.co/nss9VTW1/081eeaca4cf1.jpg"  alt="Stirrup-spout bottle with seated figure — label view" loading="lazy">
+      
     </div>
     <div class="card-info">
       <span class="mugg-num">MUGG-001</span>
       <span class="title">Stirrup-spout bottle with seated figure</span>
       <span class="attr">Moche artist(s), 200 CE–500 CE</span>
-      <a class="acquire" href="https://shop.muggmuseet.com/products/mugg-001">Acquire &rarr;</a>
+      <span class="permanent">Permanent Collection</span>
     </div>
   </div>
   </main>
 
   <footer>
     <span>The Collection</span>
-    <span>50 acquisitions</span>
+    <span>49 acquisitions</span>
   </footer>
+
+  <script>
+    document.querySelectorAll('.arrow-wrap').forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        el.dataset.pos = (parseInt(el.dataset.pos || '0') + 1) % 4;
+      });
+    });
+  </script>
 
 </body>
 </html>
